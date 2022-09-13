@@ -7,7 +7,7 @@ const loadPhones = async (searchText, dataLimit) => {
 
 const displayPhones = (phones, dataLimit) => {
     const phonesContainer = document.getElementById('phones-container');
-    // phonesContainer.textContent = '';
+    phonesContainer.textContent = '';
     // display 10 phones only 
     const showAll = document.getElementById('show-all');
     if (dataLimit && phones.length > 10) {
@@ -29,7 +29,6 @@ const displayPhones = (phones, dataLimit) => {
     }
     // display all phones
     phones.forEach(phone => {
-        console.log(phone)
         const phoneDiv = document.createElement('div');
         phoneDiv.classList.add('col');
         phonesContainer.innerHTML = `
@@ -50,6 +49,7 @@ const displayPhones = (phones, dataLimit) => {
 }
 
 const processSearch = (dataLimit) => {
+    // start loader
     toggleSpinner(true);
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
@@ -58,13 +58,12 @@ const processSearch = (dataLimit) => {
 
 // handle search button click
 document.getElementById('btn-search').addEventListener('click', function () {
-    // start loader
     processSearch(10);
 })
 
 // search input field enter key handler
-document.getElementById('search-field').addEventListener('keypress', function (e) {
-    if (e.key === 'enter') {
+document.getElementById('search-field').addEventListener('keyup', function (e) {
+    if (e.key === 'Enter') {
         processSearch(10);
     }
 });
@@ -86,7 +85,7 @@ document.getElementById('btn-show-all').addEventListener('click', function () {
 })
 
 const loadPhoneDetails = async id => {
-    const url = `www.openapi.programming-hero.com/api/phone/${id}`;
+    const url = `https://openapi.programming-hero.com/api/phone/${id}`;
     const res = await fetch(url);
     const data = await res.json();
     displayPhoneDetails(data.data);
