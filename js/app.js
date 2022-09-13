@@ -6,7 +6,6 @@ const loadPhones = async (searchText, dataLimit) => {
 }
 
 const displayPhones = (phones, dataLimit) => {
-    console.log(phones)
     const phonesContainer = document.getElementById('phones-container');
     phonesContainer.textContent = '';
     // display 10 phones only 
@@ -93,7 +92,6 @@ const loadPhoneDetails = async id => {
 }
 
 const displayPhoneDetails = phone => {
-    console.log(phone);
     const modalTitle = document.getElementById('phoneDetailModalLabel');
     modalTitle.innerText = phone.name;
     const phoneDetails = document.getElementById('phone-details');
