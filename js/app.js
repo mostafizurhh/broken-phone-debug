@@ -6,8 +6,9 @@ const loadPhones = async (searchText, dataLimit) => {
 }
 
 const displayPhones = (phones, dataLimit) => {
+    console.log(phones)
     const phonesContainer = document.getElementById('phones-container');
-    phonesContainer.textContent = '';
+    // phonesContainer.textContent = '';
     // display 10 phones only 
     const showAll = document.getElementById('show-all');
     if (dataLimit && phones.length > 10) {
@@ -15,7 +16,7 @@ const displayPhones = (phones, dataLimit) => {
         showAll.classList.remove('d-none');
     }
     else {
-        showAll.classList.add('d-hidden');
+        showAll.classList.add('d-none');
     }
 
 
@@ -31,7 +32,7 @@ const displayPhones = (phones, dataLimit) => {
     phones.forEach(phone => {
         const phoneDiv = document.createElement('div');
         phoneDiv.classList.add('col');
-        phonesContainer.innerHTML = `
+        phoneDiv.innerHTML = `
         <div class="card p-4">
             <img src="${phone.image}" class="card-img-top" alt="...">
             <div class="card-body">
